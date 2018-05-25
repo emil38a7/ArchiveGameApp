@@ -6,9 +6,11 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
+    	<Label Text="Welcome to Archive Game!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
+        <Entry Text="enter nickname"></Entry>
+        <Button Text="Join the game" Clicked="Button_Clicked"></Button>
     </StackLayout>
 
 </ContentPage>
