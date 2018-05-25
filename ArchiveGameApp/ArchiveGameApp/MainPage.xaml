@@ -9,8 +9,9 @@
     	<Label Text="Welcome to Archive Game!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <Entry Text="enter nickname"></Entry>
-        <Button Text="Join the game" Clicked="Button_Clicked"></Button>
+        <Entry x:Name="nicknameEntry" Text="enter nickname"></Entry>
+        <Button Text="Join the game" Clicked="Button_ClickedAsync"></Button>
+        <Label x:Name="hiddenLabel"></Label>
     </StackLayout>
 
 </ContentPage>
