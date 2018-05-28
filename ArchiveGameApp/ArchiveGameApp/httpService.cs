@@ -11,9 +11,9 @@ namespace ArchiveGameApp
     {
         HttpClient client;
 
-
         string postPlayerUrl = "http://192.168.1.144:3000/player";
         string getGameURL = "http://192.168.1.144:3000/game";
+        string getCurrentQuestionURL = "http://192.168.1.144:3000/currentQuestion";
 
         public httpService()
         {
@@ -31,6 +31,19 @@ namespace ArchiveGameApp
                 var games = JsonConvert.DeserializeObject<List<Game>>(res);
                 System.Diagnostics.Debug.WriteLine((JsonConvert.SerializeObject(games)).ToString());
                 return games;
+            }
+            return null;
+        }
+
+        public async Task<List <CurrentQoestion>> LoadQuestion()
+        {
+            HttpResponseMessage response = await client.GetAsync(getCurrentQuestionURL);
+            if (response.IsSuccessStatusCode)
+            {             
+                var res = await response.Content.ReadAsStringAsync();
+                var currentQuestion = JsonConvert.DeserializeObject<List<CurrentQoestion>>(res);
+                System.Diagnostics.Debug.WriteLine((JsonConvert.SerializeObject(currentQuestion)).ToString());
+                return currentQuestion;
             }
             return null;
         }

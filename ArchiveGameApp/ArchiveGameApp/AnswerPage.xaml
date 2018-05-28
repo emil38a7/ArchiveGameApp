@@ -4,9 +4,22 @@
              x:Class="ArchiveGameApp.AnswerPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Answer Page"
+            <Button Text="Welcome to Answer Page"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"
+                   x:Name="answer1"/>
+            <Button Text="Welcome to Answer Page"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   x:Name="Answer2"/>
+            <Button Text="Welcome to Answer Page"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   x:Name="Answer3"/>
+            <Button Text="Welcome to Answer Page"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                   x:Name="Answer4"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

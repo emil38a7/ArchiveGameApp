@@ -19,8 +19,6 @@ namespace ArchiveGameApp
 
         private async void Button_ClickedAsync(object sender, EventArgs e)
         {
-            //Player player = new Player("10", "Bob");
-            //this.http.PostNewPlayer(player);
             var game = await this.http.GetGame();
             string json = JsonConvert.SerializeObject(game);
             System.Diagnostics.Debug.WriteLine("JSON is " +json.ToString());
@@ -30,7 +28,9 @@ namespace ArchiveGameApp
             }
             else
             {
-                this.Navigation.PushAsync(new AnswerPage());
+                Player player = new Player("", nicknameEntry.Text);
+                this.http.PostNewPlayer(player);
+                await this.Navigation.PushAsync(new LoadingPage());
             }
         }
     }
