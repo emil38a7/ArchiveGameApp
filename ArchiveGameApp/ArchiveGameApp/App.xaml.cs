@@ -11,6 +11,7 @@ namespace ArchiveGameApp
     public partial class App : Application
     {
         public List<CurrentQoestion> nextQuestions;
+        httpService httpServices;
 
         Game game;
         CurrentQoestion curerrentQuestion;
@@ -20,6 +21,8 @@ namespace ArchiveGameApp
         {
             InitializeComponent();
             curerrentQuestion = new CurrentQoestion("0", "", new QuestionAnswer[] { }, "");
+            httpServices = new httpService();
+            TimeSpan ts = new TimeSpan(0, 0, 5);
 
             MainPage page = new MainPage();
             MainPage = new NavigationPage(page);
@@ -29,10 +32,33 @@ namespace ArchiveGameApp
         {
         }
 
-        public async void startTask() // call when loggin btn succed
+        public async void StartTask() // call when loggin btn succed
         {
+            /*
             await Task.Run(() =>
                 updateQuestionAsync());
+            */
+
+            Device.StartTimer(TimeSpan.FromSeconds(5), () =>
+            {
+                Task.Run(async () =>
+                {
+                    //var time = await RequestTimeAsync();
+                    // do something with time...
+                    System.Diagnostics.Debug.WriteLine("test: ");
+
+                    nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
+                    nextQuestion = nextQuestions[0];
+
+                    if (curerrentQuestion.questionID != nextQuestion.questionID)
+                    {
+                        await MainPage.Navigation.PushAsync(new AnswerPage(nextQuestion), true);
+                        curerrentQuestion = nextQuestion;
+
+                    }
+                });
+                return true;
+            });
         }
 
         protected override void OnSleep()
@@ -47,14 +73,16 @@ namespace ArchiveGameApp
 
         public async void updateQuestionAsync()
         {
-            httpService httpServices = new httpService();
 
             nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
             nextQuestion = nextQuestions[0];
-
-            if (curerrentQuestion.QuestionID != nextQuestion.QuestionID)
+            if (curerrentQuestion.questionID != nextQuestion.questionID)
             {
-                await MainPage.Navigation.PushAsync(new AnswerPage(null), true);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await MainPage.Navigation.PushAsync(new AnswerPage(nextQuestion), true);
+                });
+
                 curerrentQuestion = nextQuestion;
             };
 

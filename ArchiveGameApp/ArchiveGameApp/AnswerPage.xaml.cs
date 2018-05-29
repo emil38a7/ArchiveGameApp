@@ -17,13 +17,13 @@ namespace ArchiveGameApp
         string answerThree;
         string answerFour;
 
-		public AnswerPage (CurrentQoestion qoestion)
+		public AnswerPage (CurrentQoestion nextQuestion)
 		{
 			InitializeComponent ();
-            answer1.Text = qoestion.QuestionAnswer[0].answerText;
-            Answer2.Text = qoestion.QuestionAnswer[1].answerText;
-            Answer3.Text = qoestion.QuestionAnswer[2].answerText;
-            Answer4.Text = qoestion.QuestionAnswer[3].answerText;
+            answer1.Text = nextQuestion.questionAnswers[0].answerText;
+            Answer2.Text = nextQuestion.questionAnswers[1].answerText;
+            Answer3.Text = nextQuestion.questionAnswers[2].answerText;
+            Answer4.Text = nextQuestion.questionAnswers[3].answerText;
 
         }
     }

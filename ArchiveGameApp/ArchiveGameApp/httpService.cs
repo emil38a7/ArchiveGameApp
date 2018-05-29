@@ -11,14 +11,14 @@ namespace ArchiveGameApp
     {
         HttpClient client;
 
-        string postPlayerUrl = "http://10.176.164.175:3000/player";
-        string getGameURL = "http://10.176.164.175:3000/game";
+        string postPlayerUrl = "http://192.168.1.144:3000/player";
+        string getGameURL = "http://192.168.1.144:3000/game";
         string getCurrentQuestionURL;
         CurrentQoestion nextQuestion;
 
         public httpService()
         {
-            getCurrentQuestionURL = "http://10.176.164.175:3000/currentQuestion";
+            getCurrentQuestionURL = "http://192.168.1.144:3000/currentQuestion";
 
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;

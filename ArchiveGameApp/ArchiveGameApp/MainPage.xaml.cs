@@ -28,15 +28,12 @@ namespace ArchiveGameApp
             }
             else
             {
-                await DisplayAlert("Alert", "Fuck You", "OK");
+                //await DisplayAlert("Alert", "Fuck You", "OK");
                 Player player = new Player("", nicknameEntry.Text);
                 this.http.PostNewPlayer(player);
                 await this.Navigation.PushAsync(new LoadingPage());
-                ((App)App.Current).startTask();
+                ((App)App.Current).StartTask();
             }
-
-
-
         }
     }
 

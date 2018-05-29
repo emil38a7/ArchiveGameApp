@@ -6,24 +6,35 @@ namespace ArchiveGameApp
 {
     public class CurrentQoestion
     {
-        private string questionID;
-        private string questionText;
-        private QuestionAnswer[] questionAnswer;
-        private string questionDifficulty;
-
+        public string questionID;
+        public string questionText;
+        public QuestionAnswer[] questionAnswers;
+        public string questionDifficulty;
+        /*
         public string QuestionID { get => questionID; set => questionID = value; }
         public string QuestionText { get => questionText; set => questionText = value; }
         public QuestionAnswer[] QuestionAnswer { get => questionAnswer; set => questionAnswer = value; }
         public string QuestionDifficulty { get => questionDifficulty; set => questionDifficulty = value; }
-
-        public CurrentQoestion(string questionID, string questionText, QuestionAnswer[] questionAnswer, string questionDifficulty)
+        */
+        public CurrentQoestion(string questionID, string questionText, QuestionAnswer[] questionAnswers, string questionDifficulty)
         {
-            this.QuestionID = questionID;
-            this.QuestionText = questionText;
-            this.QuestionAnswer = questionAnswer;
-            this.QuestionDifficulty = questionDifficulty;
+            this.questionID = questionID;
+            this.questionText = questionText;
+            this.questionAnswers = questionAnswers;
+            this.questionDifficulty = questionDifficulty;
         }
     }
+
+    /*
+      QuestionSchema = new Schema({
+    questionID: String,
+    questionText: String,
+    questionAnswers: [{
+        answerID: String,
+        answerText: String,
+        questionID: String,
+        correctAnswer: String}],
+    questionDifficulty: String     */
 
     public class QuestionAnswer
     {
