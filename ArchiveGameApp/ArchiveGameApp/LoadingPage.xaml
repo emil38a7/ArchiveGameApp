@@ -17,7 +17,7 @@
             <Label Grid.Row="3" Text="Waiting for all players to connect..."
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-            <Button Grid.Row="5" Text="go to questions" Clicked="GoToQuestionsPageButtonClicked" />
+            <Button Grid.Row="5" Text="go to questions"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -11,12 +11,15 @@ namespace ArchiveGameApp
     {
         HttpClient client;
 
-        string postPlayerUrl = "http://192.168.1.144:3000/player";
-        string getGameURL = "http://192.168.1.144:3000/game";
-        string getCurrentQuestionURL = "http://192.168.1.144:3000/currentQuestion";
+        string postPlayerUrl = "http://10.176.164.175:3000/player";
+        string getGameURL = "http://10.176.164.175:3000/game";
+        string getCurrentQuestionURL;
+        CurrentQoestion nextQuestion;
 
         public httpService()
         {
+            getCurrentQuestionURL = "http://10.176.164.175:3000/currentQuestion";
+
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
         }
@@ -35,16 +38,23 @@ namespace ArchiveGameApp
             return null;
         }
 
-        public async Task<List <CurrentQoestion>> LoadQuestion()
+        public async Task<List<CurrentQoestion>> LoadQuestion()
         {
+
             HttpResponseMessage response = await client.GetAsync(getCurrentQuestionURL);
+            System.Diagnostics.Debug.WriteLine("Exception...");
             if (response.IsSuccessStatusCode)
-            {             
+            {
                 var res = await response.Content.ReadAsStringAsync();
                 var currentQuestion = JsonConvert.DeserializeObject<List<CurrentQoestion>>(res);
-                System.Diagnostics.Debug.WriteLine((JsonConvert.SerializeObject(currentQuestion)).ToString());
+                System.Diagnostics.Debug.WriteLine("Hi" + (JsonConvert.SerializeObject(currentQuestion)).ToString());
                 return currentQuestion;
             }
+            return null;
+        }
+
+        public CurrentQoestion getQuestion()
+        {
             return null;
         }
 

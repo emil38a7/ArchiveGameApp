@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,14 +15,14 @@ namespace ArchiveGameApp
         public List<CurrentQoestion> nextQuestions;
 
         private httpService httpServices;
-        public CurrentQoestion currentQuestion;
+        public CurrentQoestion currentQuestion = new CurrentQoestion("0", "", new QuestionAnswer[] { }, "");
 
         public LoadingPage()
         {
-            httpServices = new httpService();
+            //httpServices = new httpService();
             InitializeComponent();
             RotateElement();
-            LoadQuestion();
+            //LoadQuestion();
         }
         private async Task RotateElement()
         {
@@ -36,39 +35,32 @@ namespace ArchiveGameApp
 
         private async Task LoadQuestion()
         {
-            //currentQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
-            //CurrentQoestion currentQuestion = currentQuestions[0];
+            currentQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
+            CurrentQoestion currentQuestion = currentQuestions[0];
 
-            currentQuestion = new CurrentQoestion("0", "", new QuestionAnswer[] { }, "");
-            await DisplayAlert("Alert", "CurrentQuestion is: " + currentQuestion.QuestionID, "OK");
-
+            //currentQuestion = new CurrentQoestion("0", "", new QuestionAnswer[] { }, "");
+            //await DisplayAlert("Alert", "CurrentQuestion is: " + currentQuestion.QuestionID, "OK");
+            System.Diagnostics.Debug.WriteLine("test: " + currentQuestion.QuestionID);
 
             nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
             CurrentQoestion nextQuestion = nextQuestions[0];
 
-            await DisplayAlert("Alert", "CurrentQuestion is: " + currentQuestion.QuestionID, "OK");
-            await DisplayAlert("Alert", "Next Question is: " + nextQuestion.QuestionID, "OK");
+            //await DisplayAlert("Alert", "CurrentQuestion is: " + currentQuestion.QuestionID, "OK");
+            //await DisplayAlert("Alert", "Next Question is: " + nextQuestion.QuestionID, "OK");
+            System.Diagnostics.Debug.WriteLine("test: " + currentQuestion.QuestionID);
+            System.Diagnostics.Debug.WriteLine("test: " + nextQuestion.QuestionID);
 
             while (currentQuestion.QuestionID == nextQuestion.QuestionID)
             {
                 nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
                 nextQuestion = nextQuestions[0];
-                await Task.Delay(1000);            
+                await Task.Delay(1000);
             }
 
             currentQuestion = nextQuestion;
             await Navigation.PushAsync(new AnswerPage(null), true);
+            //dispatch.invoke(changepage); 
         }
-        async void GoToQuestionsPageButtonClicked(object sender, EventArgs e)
-        {
-            //  await Navigation.PushModalAsync(new AnswerPage(), true);
-        }
-
     }
-
-
-
-
-
 }
 
