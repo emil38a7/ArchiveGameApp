@@ -34,18 +34,23 @@ namespace ArchiveGameApp
 
         public async void StartTask() // call when loggin btn succed
         {
-            /*
-            await Task.Run(() =>
-                updateQuestionAsync());
-            */
+            await Task.Run(async () =>
+            {
+                while (true)
+                {
+                    updateQuestionAsync();
+                    await Task.Delay(2000);
+                }
+            }
+            );
 
+            /*
             Device.StartTimer(TimeSpan.FromSeconds(5), () =>
             {
                 Task.Run(async () =>
                 {
                     //var time = await RequestTimeAsync();
                     // do something with time...
-                    System.Diagnostics.Debug.WriteLine("test: ");
 
                     nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
                     nextQuestion = nextQuestions[0];
@@ -58,7 +63,7 @@ namespace ArchiveGameApp
                     }
                 });
                 return true;
-            });
+            });*/
         }
 
         protected override void OnSleep()
@@ -73,6 +78,7 @@ namespace ArchiveGameApp
 
         public async void updateQuestionAsync()
         {
+            System.Diagnostics.Debug.WriteLine("Task is invoked");
 
             nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
             nextQuestion = nextQuestions[0];
@@ -86,7 +92,6 @@ namespace ArchiveGameApp
                 curerrentQuestion = nextQuestion;
             };
 
-            await Task.Delay(1000);
         }
     }
 }
