@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,6 +23,7 @@ namespace ArchiveGameApp
 
     public class QuestionAnswer
     {
+        public string _id;
         public string answerID;
         public string answerText;
         public string questionID;
@@ -29,6 +31,16 @@ namespace ArchiveGameApp
 
         public QuestionAnswer(string answerID, string answerText, string questionID, string correctAnswer)
         {
+            this.answerID = answerID;
+            this.answerText = answerText;
+            this.questionID = questionID;
+            this.correctAnswer = correctAnswer;
+        }
+
+        [JsonConstructor]
+        public QuestionAnswer(string _id, string answerID, string answerText, string questionID, string correctAnswer)
+        {
+            this._id = _id;
             this.answerID = answerID;
             this.answerText = answerText;
             this.questionID = questionID;

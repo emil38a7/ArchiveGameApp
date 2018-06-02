@@ -97,6 +97,7 @@ namespace ArchiveGameApp
     }
 }
 /*
+ * 
            MainPage = new NavigationPage(new MainPage());
 
            TimeSpan ts = new TimeSpan(0, 0, 5);

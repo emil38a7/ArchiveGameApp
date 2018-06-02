@@ -49,7 +49,8 @@ namespace ArchiveGameApp
                 var res = await response.Content.ReadAsStringAsync();
                 var currentQuestion = JsonConvert.DeserializeObject<List<CurrentQoestion>>(res);
                 System.Diagnostics.Debug.WriteLine("Hi" + (JsonConvert.SerializeObject(currentQuestion)).ToString());
-                return currentQuestion;
+
+                    return currentQuestion;
             }
             return null;
         }
@@ -57,21 +58,6 @@ namespace ArchiveGameApp
         public CurrentQoestion getQuestion()
         {
             return null;
-        }
-
-        public async void PostPlayerAnswer(Object answerRelation)
-        {
-            var json = JsonConvert.SerializeObject(answerRelation);
-            //System.Diagnostics.Debug.WriteLine(json.ToString());
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-            try
-            {
-                HttpResponseMessage response = await client.PostAsync(postPlayerUrl, content);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Alert ", e.ToString());
-            }
         }
 
         public async Task<Player> PostNewPlayer(Object player)
@@ -98,6 +84,21 @@ namespace ArchiveGameApp
             {
                 System.Diagnostics.Debug.WriteLine("Alert ", e.ToString());
                 return null;
+            }
+        }
+
+        public async void PostPlayerAnswer(Object answerRelation)
+        {
+            var json = JsonConvert.SerializeObject(answerRelation);
+            //System.Diagnostics.Debug.WriteLine(json.ToString());
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            try
+            {
+                HttpResponseMessage response = await client.PostAsync(postPlayerUrl, content);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Alert ", e.ToString());
             }
         }
     }
