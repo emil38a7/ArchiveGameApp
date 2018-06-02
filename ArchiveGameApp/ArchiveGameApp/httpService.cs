@@ -16,6 +16,7 @@ namespace ArchiveGameApp
 
         string postPlayerUrl = "http://" + ip + ":3000/player";
         string getGameURL = "http://" + ip + ":3000/game";
+        string PostPlayerAnswerUrl = "http://" + ip + ":3000/answerRelation";
         string getCurrentQuestionURL;
         CurrentQoestion nextQuestion;
 
@@ -87,14 +88,14 @@ namespace ArchiveGameApp
             }
         }
 
-        public async void PostPlayerAnswer(Object answerRelation)
+        public async void PostPlayerAnswer(AnswerRelation answerRelation)
         {
             var json = JsonConvert.SerializeObject(answerRelation);
             //System.Diagnostics.Debug.WriteLine(json.ToString());
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             try
             {
-                HttpResponseMessage response = await client.PostAsync(postPlayerUrl, content);
+                HttpResponseMessage response = await client.PostAsync(PostPlayerAnswerUrl, content);
             }
             catch (Exception e)
             {

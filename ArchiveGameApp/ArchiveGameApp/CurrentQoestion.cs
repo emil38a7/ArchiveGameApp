@@ -48,15 +48,15 @@ namespace ArchiveGameApp
         }
     }
 
-    public class AswerRelation
+    public class AnswerRelation
     {
-        string answerID;
-        string playerID;
+        public string answerID;
+        public string playerID;
 
-        public AswerRelation(string answerID, string playerID)
+        public AnswerRelation(string answerID, string playerID)
         {
             this.answerID = answerID;
-            this.playerID = answerID;
+            this.playerID = playerID;
         }
     }
 

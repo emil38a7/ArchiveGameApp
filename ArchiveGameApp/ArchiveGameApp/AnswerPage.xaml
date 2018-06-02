@@ -3,25 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArchiveGameApp.AnswerPage">
     <ContentPage.Content>
-    <!--    <StackLayout>
-            <Button Text="Welcome to Answer Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   x:Name="answer1"/>
-            <Button Text="Welcome to Answer Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   x:Name="Answer2"/>
-            <Button Text="Welcome to Answer Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   x:Name="Answer3"/>
-            <Button Text="Welcome to Answer Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   x:Name="Answer4"/>
-        </StackLayout>-->
-
         <Grid BackgroundColor="#EAE7DC">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -33,11 +14,11 @@
 
             <Button  Grid.Row="1" Clicked="AnswerButtonClicked" Text="King Christian I"
                     BackgroundColor="#bfb8ad" TextColor="#8A3033" x:Name="answer1Button" />
-            <Button Grid.Row="2" Clicked="Answer2ButtonClicked" Text="King Christian II"
+            <Button Grid.Row="2" Clicked="AnswerButtonClicked" Text="King Christian II"
                     BackgroundColor="#bfb8ad" TextColor="#8A3033" x:Name="answer2Button"/>
-            <Button Grid.Row="3" Clicked="Answer3ButtonClicked" Text="King Fredrick I"
+            <Button Grid.Row="3" Clicked="AnswerButtonClicked" Text="King Fredrick I"
                     BackgroundColor="#bfb8ad" TextColor="#8A3033" x:Name="answer3Button"/>
-            <Button Grid.Row="4" Clicked="Answer4ButtonClicked" Text="No Danish king was in prison in Sonderborg"
+            <Button Grid.Row="4" Clicked="AnswerButtonClicked" Text="No Danish king was in prison in Sonderborg"
                     BackgroundColor="#bfb8ad" TextColor="#8A3033" x:Name="answer4Button"/>
         </Grid>
     </ContentPage.Content>
