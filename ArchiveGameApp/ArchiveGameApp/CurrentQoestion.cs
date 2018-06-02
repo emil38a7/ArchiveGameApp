@@ -10,12 +10,7 @@ namespace ArchiveGameApp
         public string questionText;
         public QuestionAnswer[] questionAnswers;
         public string questionDifficulty;
-        /*
-        public string QuestionID { get => questionID; set => questionID = value; }
-        public string QuestionText { get => questionText; set => questionText = value; }
-        public QuestionAnswer[] QuestionAnswer { get => questionAnswer; set => questionAnswer = value; }
-        public string QuestionDifficulty { get => questionDifficulty; set => questionDifficulty = value; }
-        */
+     
         public CurrentQoestion(string questionID, string questionText, QuestionAnswer[] questionAnswers, string questionDifficulty)
         {
             this.questionID = questionID;
@@ -24,17 +19,6 @@ namespace ArchiveGameApp
             this.questionDifficulty = questionDifficulty;
         }
     }
-
-    /*
-      QuestionSchema = new Schema({
-    questionID: String,
-    questionText: String,
-    questionAnswers: [{
-        answerID: String,
-        answerText: String,
-        questionID: String,
-        correctAnswer: String}],
-    questionDifficulty: String     */
 
     public class QuestionAnswer
     {
@@ -51,4 +35,18 @@ namespace ArchiveGameApp
             this.correctAnswer = correctAnswer;
         }
     }
+
+    public class AswerRelation
+    {
+        string answerID;
+        string playerID;
+
+        public AswerRelation(string answerID, string playerID)
+        {
+            this.answerID = answerID;
+            this.playerID = answerID;
+        }
+    }
+
+
 }

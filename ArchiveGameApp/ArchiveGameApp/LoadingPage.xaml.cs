@@ -11,6 +11,7 @@ namespace ArchiveGameApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoadingPage : ContentPage
     {
+
         public LoadingPage()
         {
             //httpServices = new httpService();

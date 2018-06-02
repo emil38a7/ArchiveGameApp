@@ -4,14 +4,51 @@
              xmlns:local="clr-namespace:ArchiveGameApp"
              x:Class="ArchiveGameApp.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
+    <!--  <StackLayout>
+         Place new controls here
     	<Label Text="Welcome to Archive Game!" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
         <Entry x:Name="nicknameEntry" Text="enter nickname"></Entry>
         <Button Text="Join the game" Clicked="Button_ClickedAsync"></Button>
         <Label x:Name="hiddenLabel"></Label>
-    </StackLayout>
+    </StackLayout>-->
+
+    <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="#EAE7DC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Frame  Grid.Row="0" HasShadow="True" BackgroundColor="#823329" >
+            <Image Grid.Row="0" Source="LoginLabelIcon.png" 
+                   VerticalOptions="Center" HorizontalOptions="Center"/>
+        </Frame>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry x:Name="nicknameEntry" Grid.Row="0" Grid.Column="1" Placeholder="Name" FontSize="20"
+                   VerticalOptions="End" HorizontalTextAlignment="Center" Text="NickName"/>
+
+        </Grid>
+
+
+        <Button Grid.Row="3" x:Name="PlayButton" Text="Play" TextColor="#8A3033" FontSize="20"
+                    VerticalOptions="Center" HorizontalOptions="Center" Clicked="Button_ClickedAsync"
+                    BackgroundColor="#BFB8AD" HeightRequest="80" WidthRequest="180"/>
+    </Grid>
 
 </ContentPage>

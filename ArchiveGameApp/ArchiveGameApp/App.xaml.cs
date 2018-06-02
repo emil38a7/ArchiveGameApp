@@ -13,19 +13,22 @@ namespace ArchiveGameApp
         public List<CurrentQoestion> nextQuestions;
         httpService httpServices;
 
-        Game game;
+        public static Game game;
+        public static Player player;
         CurrentQoestion curerrentQuestion;
         CurrentQoestion nextQuestion;
 
         public App()
         {
             InitializeComponent();
+
             curerrentQuestion = new CurrentQoestion("0", "", new QuestionAnswer[] { }, "");
             httpServices = new httpService();
             TimeSpan ts = new TimeSpan(0, 0, 5);
 
             MainPage page = new MainPage();
             MainPage = new NavigationPage(page);
+         //   MainPage = new MainPage();
         }
 
         protected override void OnStart()
@@ -41,8 +44,7 @@ namespace ArchiveGameApp
                     updateQuestionAsync();
                     await Task.Delay(2000);
                 }
-            }
-            );
+            });
 
             /*
             Device.StartTimer(TimeSpan.FromSeconds(5), () =>
@@ -81,7 +83,7 @@ namespace ArchiveGameApp
             System.Diagnostics.Debug.WriteLine("Task is invoked");
 
             nextQuestions = new List<CurrentQoestion>(await httpServices.LoadQuestion());
-            nextQuestion = nextQuestions[0];
+            nextQuestion = nextQuestions[0]; //add somethimg
             if (curerrentQuestion.questionID != nextQuestion.questionID)
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -91,7 +93,6 @@ namespace ArchiveGameApp
 
                 curerrentQuestion = nextQuestion;
             };
-
         }
     }
 }

@@ -101,6 +101,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\loading.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\LoginLabelIcon.png" />
+  </ItemGroup>
   <Import Project="..\ArchiveGameApp\ArchiveGameApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

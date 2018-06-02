@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ArchiveGameApp.LoadingPage">
     <ContentPage.Content>
-        <Grid >
+        <Grid BackgroundColor="#EAE7DC">
             <Grid.RowDefinitions>
                 <RowDefinition Height="6*"/>
                 <RowDefinition Height="3*"/>

@@ -11,6 +11,7 @@ namespace ArchiveGameApp
     public partial class MainPage : ContentPage
     {
         httpService http;
+
         public MainPage()
         {
             InitializeComponent();
@@ -24,13 +25,16 @@ namespace ArchiveGameApp
             System.Diagnostics.Debug.WriteLine("JSON is " +json.ToString());
             if (json.Length == 2)
             {
-                hiddenLabel.Text = "No game avalaible";
+                //  hiddenLabel.Text = "No game avalaible";
+                await DisplayAlert("Alert", "No games available", "OK");
             }
             else
             {
                 //await DisplayAlert("Alert", "Fuck You", "OK");
                 Player player = new Player("", nicknameEntry.Text);
-                this.http.PostNewPlayer(player);
+                player =  await this.http.PostNewPlayer(player);
+                App.player = player;
+
                 await this.Navigation.PushAsync(new LoadingPage());
                 ((App)App.Current).StartTask();
             }
