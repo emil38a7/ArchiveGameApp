@@ -11,13 +11,15 @@ namespace ArchiveGameApp
         public string questionText;
         public QuestionAnswer[] questionAnswers;
         public string questionDifficulty;
+        public string questionIndex;
      
-        public CurrentQoestion(string questionID, string questionText, QuestionAnswer[] questionAnswers, string questionDifficulty)
+        public CurrentQoestion(string questionID, string questionText, QuestionAnswer[] questionAnswers, string questionDifficulty, string questionIndex)
         {
             this.questionID = questionID;
             this.questionText = questionText;
             this.questionAnswers = questionAnswers;
             this.questionDifficulty = questionDifficulty;
+            this.questionIndex = questionIndex;
         }
     }
 
@@ -29,6 +31,7 @@ namespace ArchiveGameApp
         public string questionID;
         public string correctAnswer;
 
+        /*
         public QuestionAnswer(string answerID, string answerText, string questionID, string correctAnswer)
         {
             this.answerID = answerID;
@@ -36,8 +39,7 @@ namespace ArchiveGameApp
             this.questionID = questionID;
             this.correctAnswer = correctAnswer;
         }
-
-        [JsonConstructor]
+        */
         public QuestionAnswer(string _id, string answerID, string answerText, string questionID, string correctAnswer)
         {
             this._id = _id;
@@ -59,6 +61,4 @@ namespace ArchiveGameApp
             this.playerID = playerID;
         }
     }
-
-
 }

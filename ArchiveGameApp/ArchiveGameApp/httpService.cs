@@ -28,7 +28,7 @@ namespace ArchiveGameApp
             client.MaxResponseContentBufferSize = 256000;
         }
 
-        public async Task<List<Game>> GetGame()
+        public async Task<Game> GetGame()
         {
             //Object game = null;
             HttpResponseMessage response = await client.GetAsync(getGameURL);
@@ -36,8 +36,9 @@ namespace ArchiveGameApp
             {
                 var res = await response.Content.ReadAsStringAsync();
                 var games = JsonConvert.DeserializeObject<List<Game>>(res);
+                var game = games[0];
                 System.Diagnostics.Debug.WriteLine((JsonConvert.SerializeObject(games)).ToString());
-                return games;
+                return game;
             }
             return null;
         }
@@ -75,7 +76,7 @@ namespace ArchiveGameApp
                 // var res = JsonConvert.DeserializeObject<List<Player>>(dataResult);
                 JObject jPlayer = (JObject)JsonConvert.DeserializeObject(dataResult);
 
-                Player objPlayer = new Player(jPlayer.Property("_id").Value.ToString(), jPlayer.Property("playerNickName").Value.ToString());
+                Player objPlayer = new Player(jPlayer.Property("_id").Value.ToString(), jPlayer.Property("playerNickName").Value.ToString(), jPlayer.Property("playerScore").Value.ToString());
 
                 System.Diagnostics.Debug.WriteLine(dataResult);
 

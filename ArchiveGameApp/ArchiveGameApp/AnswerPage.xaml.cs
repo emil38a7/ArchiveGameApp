@@ -31,8 +31,6 @@ namespace ArchiveGameApp
             answer4Button.Text = nextQuestion.questionAnswers[3].answerText;
         }
 
-
-
         public async void AnswerButtonClicked(object sender, EventArgs e)
         {
             int index = 0;
@@ -42,7 +40,10 @@ namespace ArchiveGameApp
             button.BackgroundColor = Color.FromHex("#8A3033");
             button.TextColor = Color.FromHex("#EAE7DC");
           
-            button.IsEnabled = false;
+            answer1Button.IsEnabled = false;
+            answer2Button.IsEnabled = false;
+            answer3Button.IsEnabled = false;
+            answer4Button.IsEnabled = false;
 
             if (button == answer2Button) index = 1;
             if (button == answer3Button) index = 2;
