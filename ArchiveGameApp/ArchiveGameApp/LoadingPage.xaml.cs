@@ -27,6 +27,7 @@ namespace ArchiveGameApp
                 await loadingImage.RotateTo(0, 0);
             }
         }
+
     }
 }
 

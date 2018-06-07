@@ -51,6 +51,7 @@ namespace ArchiveGameApp
 
             httpService.PostPlayerAnswer(new AnswerRelation(nextQuestion.questionAnswers[index]._id, App.player.playerID));
         }
+
         public async void Answer2ButtonClicked(object sender, EventArgs e)
         {
             answer2Button.BackgroundColor = Color.FromHex("#8A3033");
@@ -82,6 +83,13 @@ namespace ArchiveGameApp
         private void answer1Button_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (true)
+                return true;
+            return base.OnBackButtonPressed();
         }
     }
 }

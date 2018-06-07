@@ -12,7 +12,7 @@ namespace ArchiveGameApp
     {
         HttpClient client;
 
-        static string ip = "192.168.1.144";
+        static string ip = "10.176.132.138";
 
         string postPlayerUrl = "http://" + ip + ":3000/player";
         string getGameURL = "http://" + ip + ":3000/game";
@@ -36,9 +36,9 @@ namespace ArchiveGameApp
             {
                 var res = await response.Content.ReadAsStringAsync();
                 var games = JsonConvert.DeserializeObject<List<Game>>(res);
-                var game = games[0];
-                System.Diagnostics.Debug.WriteLine((JsonConvert.SerializeObject(games)).ToString());
-                return game;
+                if (games.Count == 0) return null;
+                else { var game = games[0]; return game; }
+                //System.Diagnostics.Debug.WriteLine((JsonConvert.SerializeObject(games)).ToString());
             }
             return null;
         }
@@ -52,7 +52,7 @@ namespace ArchiveGameApp
                 var currentQuestion = JsonConvert.DeserializeObject<List<CurrentQoestion>>(res);
                 System.Diagnostics.Debug.WriteLine("Hi" + (JsonConvert.SerializeObject(currentQuestion)).ToString());
 
-                    return currentQuestion;
+                return currentQuestion;
             }
             return null;
         }
@@ -76,7 +76,8 @@ namespace ArchiveGameApp
                 // var res = JsonConvert.DeserializeObject<List<Player>>(dataResult);
                 JObject jPlayer = (JObject)JsonConvert.DeserializeObject(dataResult);
 
-                Player objPlayer = new Player(jPlayer.Property("_id").Value.ToString(), jPlayer.Property("playerNickName").Value.ToString(), jPlayer.Property("playerScore").Value.ToString());
+                Player objPlayer = new Player(jPlayer.Property("_id").Value.ToString(), jPlayer.Property("playerNickName").Value.ToString(), 
+                                                                                        jPlayer.Property("playerScore").Value.ToString());
 
                 System.Diagnostics.Debug.WriteLine(dataResult);
 

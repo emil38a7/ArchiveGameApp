@@ -25,10 +25,12 @@ namespace ArchiveGameApp
             App.game = await this.http.GetGame();
             //string json = JsonConvert.SerializeObject(game);
             //System.Diagnostics.Debug.WriteLine("JSON is " + json.ToString());
-            if (App.game.gameID == null)
+            if (App.game == null)
             {
                 //  hiddenLabel.Text = "No game avalaible";
                 await DisplayAlert("Alert", "No games available", "OK");
+                await this.Navigation.PushAsync(new MainPage());
+
             }
             else
             {

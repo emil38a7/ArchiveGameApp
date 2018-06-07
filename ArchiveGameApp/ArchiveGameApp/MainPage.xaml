@@ -30,8 +30,8 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <Entry x:Name="nicknameEntry" Grid.Row="0" Grid.Column="1" Placeholder="Name" FontSize="20"
-                   VerticalOptions="End" HorizontalTextAlignment="Center" Text="NickName"/>
+            <Entry x:Name="nicknameEntry" Grid.Row="0" Grid.Column="1" Placeholder="NickName" FontSize="20"
+                   VerticalOptions="End" HorizontalTextAlignment="Center"/>
 
         </Grid>
 

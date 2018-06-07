@@ -14,7 +14,7 @@
             </Grid.RowDefinitions>
 
             <Image Grid.Row="1" x:Name="loadingImage" Source="loading.png" VerticalOptions="Center"/>
-            <Label Grid.Row="3" Text="Waiting for all players to connect..."
+            <Label Grid.Row="3" Text="Waiting for game to start..."
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
         </Grid>

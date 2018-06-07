@@ -17,6 +17,9 @@ namespace ArchiveGameApp
         public static Player player;
         CurrentQoestion curerrentQuestion;
         CurrentQoestion nextQuestion;
+        CancellationTokenSource tokenSource;
+        CancellationToken token;
+       
 
         public App()
         {
@@ -39,14 +42,17 @@ namespace ArchiveGameApp
         //CancellationTokenSource tokenSource = new CancellationTokenSource();
         public async void StartTask() // call when loggin btn succed
         {
+             tokenSource = new CancellationTokenSource();
+             token = tokenSource.Token;
+           
             await Task.Run(async () =>
             {
-                while (true)
+                while (!token.IsCancellationRequested)
                 {
                     updateQuestionAsync();
                     await Task.Delay(2000);
                 }
-            });
+            }, token);
         }
 
         protected override void OnSleep()
@@ -76,7 +82,9 @@ namespace ArchiveGameApp
                         if (App.game.gameStatus == "open")
                         {
                             //Task.
+                            
                             await MainPage.Navigation.PushAsync(new ResultPage(), true);
+                            tokenSource.Cancel();
                         }
                     });
                 }
